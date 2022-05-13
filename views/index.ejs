@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h1>Welcome to the dashboard, <%=username%></h1>
+    <form action="/logout" method="POST">
+        <button>Logout</button>
+    </form>
+    <h2>Select product code and count to display the list of products</h2>
+    <hr>
+    <form action="/" method="POST">
+        <fieldset>
+            <label for="product_code">Product Code</label>
+            <select name="product_code">
+                <option value="PEC">PEC</option>
+                <option value="PEN">PEN</option>
+                <option value="PPR">PPR</option>
+                <option value="BLK">BLK</option>
+            </select>
+            <br/>
+            <label for="product_count">Count of products</label>
+            <input type="text" name="product_count">
+            <br/>
+        </fieldset>
+       <button>Display</button>       
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th> # </th>
+                <th> Product Code </th>
+                <th> Name </th>
+                <th> Supplier ID </th>
+                <th> Quantity </th>
+                <th> Price </th>
+            </tr>
+        </thead>
+        <tbody>
+                <%products.forEach((product) => {%>
+                    <tr>
+                        <td> <%= product.productID %> </td>
+                        <td> <%= product.productCode %> </td>
+                        <td> <%= product.name %> </td>
+                        <td> <%= product.supplierID %> </td>
+                        <td> <%= product.quantity %> </td>
+                        <td> <%= product.price %> </td>
+                        <td> <a href="/update/<%= product.productID %>">Edit</a></td>
+                        <td> <a href="/delete/<%= product.productID %>">Delete</a></td>
+                    </tr>
+                <%})%>
+        </tbody>
+    </table>
+</body>
+</html>

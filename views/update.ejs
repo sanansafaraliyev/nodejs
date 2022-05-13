@@ -1,0 +1,19 @@
+<html>
+    <head>
+    </head>
+    <body>
+            <a href="/" role="button" class="secondary">Home Page</a>
+            <hr>
+            <form action="/update/<%=id%>" method="POST">
+                <fieldset>
+                    <label for="name">New Name</label>
+                    <input type="text" name="name" >
+                    <br>
+                    <label for="price">New Price</label>
+                    <input type="text" name="price">
+                    <br/>
+                </fieldset>
+                <button>Update</button>
+            </form>
+    </body>
+</html>
